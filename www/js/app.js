@@ -10,10 +10,6 @@
     document.addEventListener('DOMContentLoaded', init);
   }
 
-  document.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-  });
-
   function init() {
     const imageEditor = document.getElementById('image-editor');
     const canvasTop = imageEditor.offsetTop;
