@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="dev.patrickobermeier.awesomeselfies" version="0.1.0-0001" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
+
+    <name>Awesome Selfie-App</name>
+    <description>An awesome selfie-app that let's you do just that! Oh, and you can draw on them!</description>
+    <author email="patrick.obermeier@outlook.com" href="http://www.patrickobermeier.dev">
+        Patrick Obermeier
+    </author>
+
+    <content src="index.html" />
+    <preference name="Orientation" value="portrait" />
+
+    <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
+
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+
+    <platform name="android">
+        <icon density="ldpi" src="www/icon.png" />
+    </platform>
+
+</widget>
