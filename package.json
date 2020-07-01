@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "cordova-plugin-camera": "~2.1.1"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-camera": {}
+    },
+    "platforms": [
+      "browser"
+    ]
+  },
+  "dependencies": {
+    "cordova-browser": "^6.0.0"
+  }
+}
