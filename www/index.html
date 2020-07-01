@@ -9,14 +9,19 @@
   <meta http-equiv="Content-Security-Policy"
     content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">
   <title>Awesome Selfie-App</title>
+  <link rel="stylesheet" href="./css/all.min.css">
   <link rel="stylesheet" href="./css/skeleton.min.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
   <canvas id="image-editor"></canvas>
-  <div id="current-color"></div>
-  <button id="reset-canvas" class="button-primary rounded-button">Reset</button>
+  <button id="toggle-paint-mode" class="button-primary rounded-button"><i class="fas fa-paint-brush"></i></button>
+  <div id="paint-ui" data-active="false">
+    <button id="reset-canvas" class="button-primary rounded-button"><i class="fas fa-eraser"></i></button>
+    <div id="current-color"></div>
+  </div>
+
 
   <script src="./js/cordova.js"></script>
   <script src="./js/config.js"></script>

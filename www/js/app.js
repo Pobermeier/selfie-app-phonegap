@@ -1,6 +1,7 @@
 (function () {
   const state = {
     currentColor: 0,
+    paintModeActive: false,
     availColors: ['red', 'green', 'blue', 'yellow'],
   };
 
@@ -15,7 +16,9 @@
     const canvasTop = imageEditor.offsetTop;
     const ctx = imageEditor.getContext('2d');
     const selectedColor = document.getElementById('current-color');
+    const togglepaintModeBtn = document.getElementById('toggle-paint-mode');
     const resetBtn = document.getElementById('reset-canvas');
+    const paintUi = document.getElementById('paint-ui');
 
     let lastX;
     let lastY;
@@ -41,24 +44,35 @@
       clear();
     });
 
+    paintUi.dataset.active = state.paintModeActive;
+
+    togglepaintModeBtn.addEventListener('click', () => {
+      state.paintModeActive = !state.paintModeActive;
+      paintUi.dataset.active = state.paintModeActive;
+    });
+
     // Draw Functionality
     imageEditor.addEventListener('touchstart', (e) => {
       e.preventDefault();
-      lastX = e.touches[0].clientX;
-      lastY = e.touches[0].clientY - canvasTop;
+      if (state.paintModeActive) {
+        lastX = e.touches[0].clientX;
+        lastY = e.touches[0].clientY - canvasTop;
 
-      paintDot(lastX, lastY);
+        paintDot(lastX, lastY);
+      }
     });
 
     imageEditor.addEventListener('touchmove', (e) => {
       e.preventDefault();
-      const newX = e.touches[0].clientX;
-      const newY = e.touches[0].clientY - canvasTop;
+      if (state.paintModeActive) {
+        const newX = e.touches[0].clientX;
+        const newY = e.touches[0].clientY - canvasTop;
 
-      drawLine(lastX, lastY, newX, newY);
+        drawLine(lastX, lastY, newX, newY);
 
-      lastX = newX;
-      lastY = newY;
+        lastX = newX;
+        lastY = newY;
+      }
     });
 
     function drawLine(fromx, fromy, tox, toy) {
