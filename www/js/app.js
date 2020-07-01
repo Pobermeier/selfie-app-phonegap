@@ -10,6 +10,10 @@
     document.addEventListener('DOMContentLoaded', init);
   }
 
+  document.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+  });
+
   function init() {
     const imageEditor = document.getElementById('image-editor');
     const canvasTop = imageEditor.offsetTop;
@@ -43,6 +47,7 @@
 
     // Draw Functionality
     imageEditor.addEventListener('touchstart', (e) => {
+      e.preventDefault();
       lastX = e.touches[0].clientX;
       lastY = e.touches[0].clientY - canvasTop;
 
@@ -50,6 +55,7 @@
     });
 
     imageEditor.addEventListener('touchmove', (e) => {
+      e.preventDefault();
       const newX = e.touches[0].clientX;
       const newY = e.touches[0].clientY - canvasTop;
 
