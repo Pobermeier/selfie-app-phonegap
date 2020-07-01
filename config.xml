@@ -20,4 +20,8 @@
         <icon density="ldpi" src="www/icon.png" />
     </platform>
 
+    <platform name="ios">
+        <icon height="152" platform="ios" src="www/icon.png" width="152" />
+    </platform>
+
 </widget>
