@@ -1,1 +1,1 @@
-const APP = window.cordova;
+const APP = true;

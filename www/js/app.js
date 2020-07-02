@@ -22,6 +22,8 @@
     const resetBtn = document.getElementById('reset-canvas');
     const paintUi = document.getElementById('paint-ui');
 
+    alert('Init called');
+
     let lastX;
     let lastY;
 
@@ -128,7 +130,9 @@
 
     // Canvas Helper functions
     function cameraLoadImage() {
-      const config = {};
+      const config = {
+        correctOrientation: true,
+      };
       if (APP) {
         navigator.camera.getPicture(
           (imgData) => {
