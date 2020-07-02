@@ -115,7 +115,17 @@
     }
 
     function drawImage(img) {
-      ctx.drawImage(img, 0, 0);
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        imageEditor.width,
+        imageEditor.height,
+        0,
+        0,
+        imageEditor.width,
+        imageEditor.height,
+      );
     }
 
     // Canvas Helper functions
@@ -123,7 +133,6 @@
       const config = {
         correctOrientation: true,
         quality: 100,
-        targetWidth: imageEditor.width,
         targetHeight: imageEditor.height,
         cameraDirection: 'FRONT',
       };
