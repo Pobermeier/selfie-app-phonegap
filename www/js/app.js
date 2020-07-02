@@ -5,6 +5,8 @@
     availColors: ['red', 'green', 'blue', 'yellow'],
   };
 
+  console.log(APP);
+
   if (APP) {
     document.addEventListener('deviceready', init);
   } else {
@@ -21,8 +23,6 @@
     const togglepaintModeBtn = document.getElementById('toggle-paint-mode');
     const resetBtn = document.getElementById('reset-canvas');
     const paintUi = document.getElementById('paint-ui');
-
-    alert('Init called');
 
     let lastX;
     let lastY;
@@ -115,23 +115,17 @@
     }
 
     function drawImage(img) {
-      ctx.drawImage(
-        img,
-        0,
-        0,
-        img.width,
-        img.height,
-        0,
-        0,
-        screen.width,
-        screen.height,
-      );
+      ctx.drawImage(img, 0, 0);
     }
 
     // Canvas Helper functions
     function cameraLoadImage() {
       const config = {
         correctOrientation: true,
+        quality: 100,
+        targetWidth: screen.width,
+        targetHeight: screen.height,
+        cameraDirection: 'FRONT',
       };
       if (APP) {
         navigator.camera.getPicture(
@@ -163,6 +157,7 @@
           () => {
             alert('Saving the image failed!');
           },
+          imageEditor,
         );
       } else {
         alert(
@@ -178,7 +173,7 @@
 
     function clear() {
       ctx.fillStyle = '#ffffff';
-      ctx.rect(0, 0, window.innerWidth, window.innerHeight);
+      ctx.rect(0, 0, screen.width, screen.height);
       ctx.fill();
     }
   }
