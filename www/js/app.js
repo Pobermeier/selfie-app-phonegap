@@ -54,11 +54,11 @@
     });
 
     saveToGalleryBtn.addEventListener('click', () => {
-      console.log('Save To Gallery Btn clicked');
+      saveImageToGallery();
     });
 
     takePictureBtn.addEventListener('click', () => {
-      console.log('Take Picure Btn clicked');
+      cameraLoadImage();
     });
 
     // Draw Functionality
@@ -85,6 +85,21 @@
       }
     });
 
+    // UI Helper Functions
+    function resetColor() {
+      state.currentColor = 0;
+      return state.availColors[state.currentColor];
+    }
+
+    // Draw Functions
+    function paintDot(x, y) {
+      ctx.beginPath();
+      ctx.fillStyle = state.availColors[state.currentColor];
+      ctx.arc(x, y, 5, 0, Math.PI * 2, true);
+      ctx.fill();
+      ctx.closePath();
+    }
+
     function drawLine(fromx, fromy, tox, toy) {
       ctx.strokeStyle = state.availColors[state.currentColor];
       ctx.lineCap = 'round';
@@ -97,31 +112,70 @@
       ctx.closePath();
     }
 
-    // UI Helper Functions
-    function resetColor() {
-      state.currentColor = 0;
-      return state.availColors[state.currentColor];
+    function drawImage(img) {
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        img.width,
+        img.height,
+        0,
+        0,
+        screen.width,
+        screen.height,
+      );
+    }
+
+    // Canvas Helper functions
+    function cameraLoadImage() {
+      const config = {};
+      if (APP) {
+        navigator.camera.getPicture(
+          (imgData) => {
+            const img = new Image();
+            img.src = imgData;
+            img.onload = () => {
+              drawImage(img);
+            };
+          },
+          () => {
+            alert('Error drawing image');
+          },
+          config,
+        );
+      } else {
+        alert(
+          'Taking a photo is only available when running the app on a mobile device.',
+        );
+      }
+    }
+
+    function saveImageToGallery() {
+      if (APP) {
+        window.canvas2ImagePlugin.saveImageDataToLibrary(
+          () => {
+            alert('Image successfully saved to gallery!');
+          },
+          () => {
+            alert('Saving the image failed!');
+          },
+        );
+      } else {
+        alert(
+          'Save to Gallery is only available when running the app on a mobile device.',
+        );
+      }
+    }
+
+    function resetCanvasSize() {
+      imageEditor.width = screen.width;
+      imageEditor.height = screen.height;
     }
 
     function clear() {
       ctx.fillStyle = '#ffffff';
       ctx.rect(0, 0, window.innerWidth, window.innerHeight);
       ctx.fill();
-    }
-
-    // Draw Functions
-    function paintDot(x, y) {
-      ctx.beginPath();
-      ctx.fillStyle = state.availColors[state.currentColor];
-      ctx.arc(x, y, 5, 0, Math.PI * 2, true);
-      ctx.fill();
-      ctx.closePath();
-    }
-
-    // Canvas Helper functions
-    function resetCanvasSize() {
-      imageEditor.width = screen.width;
-      imageEditor.height = screen.height;
     }
   }
 })();
