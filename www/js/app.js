@@ -123,8 +123,8 @@
       const config = {
         correctOrientation: true,
         quality: 100,
-        targetWidth: screen.width,
-        targetHeight: screen.height,
+        targetWidth: imageEditor.width,
+        targetHeight: imageEditor.height,
         cameraDirection: 'FRONT',
       };
       if (APP) {
@@ -167,13 +167,13 @@
     }
 
     function resetCanvasSize() {
-      imageEditor.width = screen.width;
-      imageEditor.height = screen.height;
+      imageEditor.width = window.innerWidth;
+      imageEditor.height = window.innerHeight;
     }
 
     function clear() {
       ctx.fillStyle = '#ffffff';
-      ctx.rect(0, 0, screen.width, screen.height);
+      ctx.rect(0, 0, imageEditor.width, imageEditor.height);
       ctx.fill();
     }
   }
