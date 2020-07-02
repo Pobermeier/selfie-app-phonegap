@@ -21,6 +21,7 @@ button i::before {
 
 .button-primary.rounded-button {
   border-radius: 50%;
+  border: none;
   width: 5rem;
   height: 5rem;
   padding: 0;
@@ -35,13 +36,31 @@ button i::before {
   -webkit-tap-highlight-color: transparent;
 }
 
+.button-primary.rounded-button:active {
+  background-color: #175568;
+}
+
 #current-color {
   position: absolute;
   bottom: 2rem;
-  right: 2rem;
+  left: 13rem;
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
+}
+
+#take-picture {
+  position: absolute;
+  margin: 0;
+  bottom: 2rem;
+  right: 7.5rem;
+}
+
+#save-to-gallery {
+  position: absolute;
+  margin: 0;
+  bottom: 2rem;
+  right: 2rem;
 }
 
 #toggle-paint-mode {
@@ -55,5 +74,5 @@ button i::before {
   position: absolute;
   margin: 0;
   bottom: 2rem;
-  left: 9rem;
+  left: 7.5rem;
 }

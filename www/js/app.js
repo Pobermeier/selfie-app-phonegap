@@ -15,6 +15,8 @@
     const imageEditor = document.getElementById('image-editor');
     const canvasTop = imageEditor.offsetTop;
     const ctx = imageEditor.getContext('2d');
+    const saveToGalleryBtn = document.getElementById('save-to-gallery');
+    const takePictureBtn = document.getElementById('take-picture');
     const selectedColor = document.getElementById('current-color');
     const togglepaintModeBtn = document.getElementById('toggle-paint-mode');
     const resetBtn = document.getElementById('reset-canvas');
@@ -49,6 +51,14 @@
     togglepaintModeBtn.addEventListener('click', () => {
       state.paintModeActive = !state.paintModeActive;
       paintUi.dataset.active = state.paintModeActive;
+    });
+
+    saveToGalleryBtn.addEventListener('click', () => {
+      console.log('Save To Gallery Btn clicked');
+    });
+
+    takePictureBtn.addEventListener('click', () => {
+      console.log('Take Picure Btn clicked');
     });
 
     // Draw Functionality
