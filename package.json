@@ -1,14 +1,14 @@
 {
   "devDependencies": {
-    "cordova-plugin-camera": "~2.1.1"
+    "cordova-plugin-camera": "~2.1.1",
+    "cordova-plugin-canvas2image": "~0.7.0"
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-camera": {}
+      "cordova-plugin-camera": {},
+      "cordova-plugin-canvas2image": {}
     },
-    "platforms": [
-      "browser"
-    ]
+    "platforms": ["browser"]
   },
   "scripts": {
     "dev": "phonegap serve"

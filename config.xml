@@ -12,6 +12,7 @@
     <preference name="Orientation" value="portrait" />
 
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
+    <plugin name="cordova-plugin-canvas2image" source="npm" spec="~0.7.0" />
 
     <access origin="*" />
     <allow-intent href="http://*/*" />
