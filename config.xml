@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget id="dev.patrickobermeier.awesomeselfies" version="0.1.0-0002" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
 
-    <name>Awesome Selfie-App</name>
+    <name>Selfiefy</name>
     <description>An awesome selfie-app that let's you do just that! Oh, and you can draw on them!</description>
     <author email="patrick.obermeier@outlook.com" href="http://www.patrickobermeier.dev">
         Patrick Obermeier
