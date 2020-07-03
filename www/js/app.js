@@ -5,8 +5,6 @@
     availColors: ['red', 'green', 'blue', 'yellow'],
   };
 
-  console.log(APP);
-
   if (APP) {
     document.addEventListener('deviceready', init);
   } else {
