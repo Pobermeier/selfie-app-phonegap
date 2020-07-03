@@ -40,18 +40,15 @@ button i::before {
   background-color: #175568;
 }
 
-#filters {
+#PresetFilters {
+  display: flex;
   position: absolute;
   overflow-x: scroll;
   overflow-y: hidden;
-  height: 9rem;
+  height: 5rem;
   bottom: 7rem;
   width: 100%;
   left: 2rem;
-}
-
-#PresetFilters {
-  display: flex;
   flex-direction: row;
   align-items: flex-start;
 }
