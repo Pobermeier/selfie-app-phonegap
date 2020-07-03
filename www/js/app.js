@@ -22,6 +22,7 @@
     const togglepaintModeBtn = document.getElementById('toggle-paint-mode');
     const resetBtn = document.getElementById('reset-canvas');
     const paintUi = document.getElementById('paint-ui');
+    const filterBtns = document.querySelectorAll('#PresetFilters button');
 
     let lastX;
     let lastY;
@@ -48,6 +49,27 @@
     });
 
     paintUi.dataset.active = state.paintModeActive;
+
+    filterBtns.forEach((filterBtn) => {
+      filterBtn.addEventListener('click', (e) => {
+        const filterPreset = e.target.dataset.preset;
+
+        if (filterPreset === 'original') {
+          Caman(imageEditor, function () {
+            this.revert().render();
+          });
+          return;
+        }
+
+        if (state.image) {
+          const img = new Image();
+          img.src = state.image;
+          img.onload = () => {
+            drawImage(img, filterPreset);
+          };
+        }
+      });
+    });
 
     togglepaintModeBtn.addEventListener('click', () => {
       state.paintModeActive = !state.paintModeActive;
@@ -113,21 +135,21 @@
       ctx.closePath();
     }
 
-    function drawImage(img) {
-      // ctx.drawImage(
-      //   img,
-      //   0,
-      //   0,
-      //   imageEditor.width,
-      //   imageEditor.height,
-      //   0,
-      //   0,
-      //   imageEditor.width,
-      //   imageEditor.height,
-      // );
-      Caman(imageEditor, img.src, function () {
-        this.render();
-      });
+    function drawImage(img, filter) {
+      // Clear canvas before repaint
+      // clear();
+
+      // Draw new image with or without filter applied
+      if (filter) {
+        Caman(imageEditor, img.src, function () {
+          this.revert();
+          this[`${filter}`]().render();
+        });
+      } else {
+        Caman(imageEditor, img.src, function () {
+          this.render();
+        });
+      }
     }
 
     // Canvas Helper functions
@@ -143,11 +165,10 @@
           (imgData) => {
             const img = new Image();
             img.src = imgData;
+            state.image = img.src;
             img.onload = () => {
               drawImage(img);
             };
-            // Persist image data to app state
-            state.image = img;
           },
           () => {
             alert('Error drawing image');
@@ -160,11 +181,10 @@
         );
         const img = new Image();
         img.src = './img/test.png';
+        state.image = img.src;
         img.onload = () => {
           drawImage(img);
         };
-        // Persist image data to app state
-        state.image = img;
       }
     }
 
