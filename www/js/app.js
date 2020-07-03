@@ -3,6 +3,7 @@
     currentColor: 0,
     paintModeActive: false,
     availColors: ['red', 'green', 'blue', 'yellow', 'white'],
+    image: null,
   };
 
   if (APP) {
@@ -113,17 +114,20 @@
     }
 
     function drawImage(img) {
-      ctx.drawImage(
-        img,
-        0,
-        0,
-        imageEditor.width,
-        imageEditor.height,
-        0,
-        0,
-        imageEditor.width,
-        imageEditor.height,
-      );
+      // ctx.drawImage(
+      //   img,
+      //   0,
+      //   0,
+      //   imageEditor.width,
+      //   imageEditor.height,
+      //   0,
+      //   0,
+      //   imageEditor.width,
+      //   imageEditor.height,
+      // );
+      Caman(imageEditor, img.src, function () {
+        this.render();
+      });
     }
 
     // Canvas Helper functions
@@ -142,6 +146,8 @@
             img.onload = () => {
               drawImage(img);
             };
+            // Persist image data to app state
+            state.image = img;
           },
           () => {
             alert('Error drawing image');
@@ -152,6 +158,13 @@
         alert(
           'Taking a photo is only available when running the app on a mobile device.',
         );
+        const img = new Image();
+        img.src = './img/test.png';
+        img.onload = () => {
+          drawImage(img);
+        };
+        // Persist image data to app state
+        state.image = img;
       }
     }
 
