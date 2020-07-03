@@ -154,13 +154,14 @@
 
     // Canvas Helper functions
     function cameraLoadImage() {
-      const config = {
-        correctOrientation: true,
-        quality: 100,
-        targetHeight: imageEditor.height,
-        cameraDirection: 'FRONT',
-      };
       if (APP) {
+        const config = {
+          correctOrientation: true,
+          quality: 100,
+          targetHeight: imageEditor.height,
+          cameraDirection: Camera.Direction.FRONT,
+        };
+
         navigator.camera.getPicture(
           (imgData) => {
             const img = new Image();
