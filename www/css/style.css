@@ -42,6 +42,7 @@ button i::before {
 
 #current-color {
   position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   bottom: 2rem;
   left: 13rem;
   width: 5rem;
