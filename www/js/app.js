@@ -2,7 +2,7 @@
   const state = {
     currentColor: 0,
     paintModeActive: false,
-    availColors: ['red', 'green', 'blue', 'yellow'],
+    availColors: ['red', 'green', 'blue', 'yellow', 'white'],
   };
 
   if (APP) {
