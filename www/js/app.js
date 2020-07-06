@@ -143,7 +143,7 @@
       if (filter) {
         Caman(imageEditor, img.src, function () {
           this.revert();
-          this[`${filter}`]().render();
+          this[filter]().render();
         });
       } else {
         Caman(imageEditor, img.src, function () {
